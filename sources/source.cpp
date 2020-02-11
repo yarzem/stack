@@ -7,19 +7,19 @@ class dog{
 public:
     std::string word = "gav";
     int i;
-    dog(const int &a)
+explicit dog(const int &a)
     {
         i = a;
     }
 };
 template<typename T>
-struct data 
+struct data
 {
     T value = NULL;
     data *prev = nullptr;
 };
 template<typename T>
-class stack 
+class stack
 {
 public:
     void clearer()
@@ -67,7 +67,7 @@ public:
     };
     const T &head() const {
         return top->value;
-    };
+    }
     template<typename ... Args>
     void push_emplace(Args &&... value)
     {
