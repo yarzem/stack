@@ -72,7 +72,7 @@ public:
     void push_emplace(Args &&... value)
     {
         T tmp(value...);
-        push(std::copy(tmp));
+        this->push(tmp);
     }
 
     data<T> *top = nullptr;
