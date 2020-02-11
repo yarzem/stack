@@ -51,7 +51,7 @@ public:
     {
         data<T> *tmp;
         tmp = top;
-        top = new data<T>;
+        top = new data<T>();
         top->prev = tmp;
         top->value = value;
     };
