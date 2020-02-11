@@ -15,6 +15,7 @@ explicit dog(const int &a)
 template<typename T>
 struct data
 {
+	data(){}
     T value;
     data *prev = nullptr;
 };
