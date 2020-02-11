@@ -5,6 +5,7 @@
 
 class dog{
 public:
+    dog(){}
     std::string word = "gav";
     int i;
 explicit dog(const int &a)
@@ -52,7 +53,7 @@ public:
     {
         data<T> *tmp;
         tmp = top;
-        top = new data<T>();
+        top = new data<T>;
         top->prev = tmp;
         top->value = value;
     };
