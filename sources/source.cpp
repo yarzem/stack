@@ -15,7 +15,7 @@ explicit dog(const int &a)
 template<typename T>
 struct data
 {
-    T value = NULL;
+    T value;
     data *prev = nullptr;
 };
 template<typename T>
@@ -72,7 +72,7 @@ public:
     void push_emplace(Args &&... value)
     {
         T tmp(value...);
-        push(tmp);
+        push(std::copy(tmp));
     }
 
     data<T> *top = nullptr;
