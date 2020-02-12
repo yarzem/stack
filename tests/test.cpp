@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 #include "header.hpp"
-TEST(Example) {
+TEST(Example, Stack) {
      dog Lavr(1);
     dog Pitbul(2);
     stack<dog> st;
