@@ -1,7 +1,7 @@
 // Copyright 2018 Your Name <your_email>
 
 #include <gtest/gtest.h>
-#include "source.cpp"
+#include "header.hpp"
 TEST(Example, EmptyTest) {
      dog Lavr(1);
     dog Pitbul(2);
