@@ -25,7 +25,6 @@ TEST(Example, Stack) {
     st.push(Lavr);
     st.push_emplace("world");
     EXPECT_EQ(st.head().word, "world");
-    
 }
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
