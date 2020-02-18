@@ -32,7 +32,7 @@ explicit stack(T &&value) {
         a.top = nullptr;
     }
 
-    void operator=(const stack<T> &) = delete;
+    void operator=(const stack &) = delete;
 
     void operator=(stack &&a) {
         this->top = a.top;
