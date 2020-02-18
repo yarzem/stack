@@ -5,10 +5,6 @@
 TEST(Example, Stack) {
     EXPECT_EQ(std::is_move_constructible<stack<int>>::value, true);
     EXPECT_EQ(std::is_move_assignable<stack<int>>::value, true);
-    EXPECT_EQ(std::is_move_constructible<stack<int>>::value, true);
-    EXPECT_EQ(std::is_move_assignable<stack<int>>::value, true);
-    EXPECT_EQ(std::is_copy_constructible<stack<int>>::value, false);
-    EXPECT_EQ(std::is_copy_assignable<stack<int>>::value, false);
     EXPECT_EQ(std::is_copy_constructible<stack<int>>::value, false);
     EXPECT_EQ(std::is_copy_assignable<stack<int>>::value, false);
     stack <std::string> x;
