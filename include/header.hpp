@@ -62,7 +62,7 @@ explicit stack(T &&value) {
         top->value = value;
     }
 
-    void push( T &value) {
+    void push(T &value) {
         data<T>*tmp;
         tmp = top;
         top = new data<T>;
@@ -75,7 +75,7 @@ explicit stack(T &&value) {
         tmp = top;
         top = top->prev;
         T tmps = tmp->value;
-        if (tmp) { delete (tmp);tmp = nullptr; }
+        if (tmp) { delete (tmp); tmp = nullptr; }
         return tmps;
     }
 
