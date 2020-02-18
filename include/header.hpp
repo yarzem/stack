@@ -3,14 +3,13 @@
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
 #include <iostream>
-
+#include <string>
 class dog {
 public:
     std::string word = "gav";
     int i;
-    dog(){};
-    dog(std::string str){word=str;}
-
+    dog(){}
+explicit dog(std::string str){word = str;}
 };
 
 template<typename T>
@@ -22,12 +21,10 @@ struct data {
 template<typename T>
 class stack {
 public:
-    stack() {};
-
-    stack(T &&value) {
+    stack() {}
+explicit stack(T &&value) {
         push(std::move(value));
     }
-
     stack(const stack<T> &) = delete;
 
     stack(stack<T> &&a) {
@@ -63,15 +60,15 @@ public:
         top = new data<T>;
         top->prev = tmp;
         top->value = value;
-    };
+    }
 
     void push( T &value) {
-        data<T> *tmp;
+        data<T>*tmp;
         tmp = top;
         top = new data<T>;
         top->prev = tmp;
         top->value = std::move(value);
-    };
+    }
 
     T pop() {
         data<T> *tmp;
@@ -80,11 +77,11 @@ public:
         T tmps = tmp->value;
         if (tmp) { delete (tmp);tmp = nullptr; }
         return tmps;
-    };
+    }
 
     const T &head() const {
         return top->value;
-    };
+    }
 
     template<typename ... Args>
     void push_emplace(Args &&... value) {
