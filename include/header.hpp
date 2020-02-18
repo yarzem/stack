@@ -25,16 +25,17 @@ public:
 explicit stack(T &&value) {
         push(std::move(value));
     }
+    template<typename T>
     stack(const stack<T> &) = delete;
-
+    template<typename T>
     stack(stack<T> &&a) {
         this->top = a.top;
         a.top = nullptr;
     }
-
-    void operator=(const stack &) = delete;
-
-    void operator=(stack &&a) {
+    template<typename T>
+    void operator=(const stack<T> &) = delete;
+    template<typename T>
+    void operator=(stack<T> &&a) {
         this->top = a.top;
         a.top = nullptr;
     }
