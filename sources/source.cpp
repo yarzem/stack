@@ -4,7 +4,7 @@
 #include <iostream>
 
 int main() {
-	dog Lavr;
+    dog Lavr;
     stack<dog> st;
     st.push(Lavr);
     st.push_emplace("world");
