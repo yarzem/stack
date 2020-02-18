@@ -2,80 +2,93 @@
 
 #ifndef INCLUDE_HEADER_HPP_
 #define INCLUDE_HEADER_HPP_
-#include <string>
 #include <iostream>
-class dog{
+
+class dog {
 public:
-    dog(){}
     std::string word = "gav";
     int i;
-explicit dog(const int &a)
-    {
-        i = a;
-    }
+    dog(){};
+    dog(std::string str){word=str;}
+
 };
+
 template<typename T>
-struct data
-{
-    data(){}
+struct data {
     T value;
     data *prev = nullptr;
 };
+
 template<typename T>
-class stack
-{
+class stack {
 public:
-    void clearer()
-    {
-        if (top)
-        {
-            while (top->prev)
-            {
-                data<T> *tmp;
-                tmp = top;
-                top = top->prev;
-                delete (tmp);
+    stack() {};
+
+    stack(T &&value) {
+        push(std::move(value));
+    }
+
+    stack(const stack<T> &) = delete;
+
+    stack(stack<T> &&a) {
+        this->top = a.top;
+        a.top = nullptr;
+    }
+
+    void operator=(const stack<T> &) = delete;
+
+    void operator=(stack<T> &&a) {
+        this->top = a.top;
+        a.top = nullptr;
+    }
+
+    void clearer() {
+        if (top) {
+            while (top->prev) {
+                data<T> *tmp = std::move(top->prev);
+                delete (top);
+                top = nullptr;
+                std::cout << "cleared";
+                top = tmp;
             }
             delete (top);
+            top = nullptr;
+            std::cout << "cleared";
         }
     }
 
-    void push(T &&value)
-    {
-        if (top)
-        {
-            clearer();
-        }
-        top = new data<T>;
-        top->prev = nullptr;
-        top->value = value;
-    };
-    void push(const T &value)
-    {
+    void push(T &&value) {
         data<T> *tmp;
         tmp = top;
         top = new data<T>;
         top->prev = tmp;
         top->value = value;
     };
-    T pop()
-    {
+
+    void push( T &value) {
+        data<T> *tmp;
+        tmp = top;
+        top = new data<T>;
+        top->prev = tmp;
+        top->value = std::move(value);
+    };
+
+    T pop() {
         data<T> *tmp;
         tmp = top;
         top = top->prev;
         T tmps = tmp->value;
-        if (tmp)
-        { delete (tmp); }
+        if (tmp) { delete (tmp);tmp = nullptr; }
         return tmps;
     };
+
     const T &head() const {
         return top->value;
-    }
+    };
+
     template<typename ... Args>
-    void push_emplace(Args &&... value)
-    {
-        T tmp(value...);
-        this->push(tmp);
+    void push_emplace(Args &&... value) {
+        push(std::forward<T>(T(value...)));
     }
 
     data<T> *top = nullptr;
